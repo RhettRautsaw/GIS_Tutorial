@@ -5,7 +5,7 @@ Geographic Information System (GIS) is a framework for gathering, managing, visu
 
 [qGIS](https://www.qgis.org/en/site/) and [R](https://www.r-project.org/) are two alternate **free** open-source softwares you can use to analyze and manage GIS data. 
 
-Here, I will briefly go over the basics of GIS, qGIS, and R and give you all the tips and tricks I have learned. However, there are much more extensive tutorials and such found elsewhere (*e.g.*, [qGIS Documentation](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/index.html)). 
+Here, I will briefly go over the basics of GIS, qGIS, and R and give you all the tips and tricks I have learned. However, there are much more extensive tutorials found elsewhere (*e.g.*, [qGIS Documentation](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/index.html)). 
 
 On this page, you will find the general introduction to GIS including useful resources to explain GIS concepts and a long list of data/analysis resources at the bottom of the document.
 

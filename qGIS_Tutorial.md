@@ -38,7 +38,7 @@ If you installed qGIS manually, then you should have a desktop icon that you can
 
 ![](./figures/qgis_interface.png) 
 
-1. **Mapping Window**: This is where your map will appear when you start adding data. 
+1. **Mapping Window**: This is where your map will appear when you start adding data. When you first launch qGIS, you may see "Recent Projects" here that you can easily open to start work on a previously saved project.
 
 2. **qGIS Menu**: Like any application, qGIS has a set of menus where you can find utilities like save, open, etc. Feel free to explore these click down menus, but most of the items in these menus can be accessed from *Toolbars* (see item 3). 
 
