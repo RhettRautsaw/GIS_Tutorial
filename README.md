@@ -203,6 +203,8 @@ Additional lists of resources:
 - [ORNIS](http://www.ornisnet.org/)
 - [eBird](https://ebird.org/home)
 - [SpeciesLink](http://splink.cria.org.br/project?criaLANG=en)
+- [Specimen Data Use Cases](https://biodiversity-specimen-data.github.io/specimen-data-use-case/)
+	- [Biodiversity Record Aggregators](https://biodiversity-specimen-data.github.io/specimen-data-use-case/AggregatorsTable)
 
 ### Shapefiles
 - [GADM World/Country/Subdivisions](https://gadm.org/index.html)
@@ -210,6 +212,8 @@ Additional lists of resources:
 - [TIGER/Line Shapefiles](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html)
 - [Florida Geographic Data Library](https://www.fgdl.org/metadataexplorer/explorer.jsp)
 - [IUCN Range Maps](https://www.iucnredlist.org/resources/spatial-data-download)
+- [HydroSHEDS Rivers, Lakes, etc.](https://www.hydrosheds.org/)
+
 
 ### Raster Data
 - [WorldClim](http://www.worldclim.org/)
@@ -222,10 +226,13 @@ Additional lists of resources:
 - [EarthExplorer](https://earthexplorer.usgs.gov/)
 - [ISRIC: Wise30 Soil](https://data.isric.org/geonetwork/srv/eng/catalog.search#/home)
 - [Geomorpho90m](https://portal.opentopography.org/dataspace/dataset?opentopoID=OTDS.012020.4326.1)
+- [MERIT Hydro](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/)
+- [MERIT DEM (Digital Elevation Model)](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)
 
 ### General
 - [ESRI Open Data Hub](https://hub.arcgis.com/search)
 - [OpenStreetMap](https://www.openstreetmap.org/#map=5/38.007/-95.844)
+- [DIVA-GIS](http://www.diva-gis.org/gdata)
 - [NOAA](https://coast.noaa.gov/dataviewer/#)
 - [NASA EarthData](https://earthdata.nasa.gov/)
 - [United States Interagency Elevation Inventory](https://coast.noaa.gov/inventory/)
@@ -234,6 +241,8 @@ Additional lists of resources:
 - [USGS GIS Data](https://www.usgs.gov/products/maps/gis-data)
 - [LIDAR Online 2.0](https://www.lidar-online.com/)
 - [qGIS Basemaps](https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py)
+- [Maps for Free: Relief Map](https://maps-for-free.com/)
+	- Available through qGIS QuickMapServices
 
 
 ## Analysis
