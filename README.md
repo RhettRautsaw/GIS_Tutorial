@@ -181,6 +181,8 @@ Additional lists of resources:
 - [SDMToolbox Resources](http://www.sdmtoolbox.org/resources)
 - [Wikipedia](https://en.wikipedia.org/wiki/List_of_GIS_data_sources)
 - [GIS Geography](https://gisgeography.com/best-free-gis-data-sources-raster-vector/)
+- [Specimen Data Use Cases](https://biodiversity-specimen-data.github.io/specimen-data-use-case/)
+	- [Biodiversity Record Aggregators](https://biodiversity-specimen-data.github.io/specimen-data-use-case/AggregatorsTable)
 
 ## Training
 
@@ -203,8 +205,6 @@ Additional lists of resources:
 - [ORNIS](http://www.ornisnet.org/)
 - [eBird](https://ebird.org/home)
 - [SpeciesLink](http://splink.cria.org.br/project?criaLANG=en)
-- [Specimen Data Use Cases](https://biodiversity-specimen-data.github.io/specimen-data-use-case/)
-	- [Biodiversity Record Aggregators](https://biodiversity-specimen-data.github.io/specimen-data-use-case/AggregatorsTable)
 
 ### Shapefiles
 - [GADM World/Country/Subdivisions](https://gadm.org/index.html)
