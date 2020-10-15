@@ -205,6 +205,7 @@ Additional lists of resources:
 - [ORNIS](http://www.ornisnet.org/)
 - [eBird](https://ebird.org/home)
 - [SpeciesLink](http://splink.cria.org.br/project?criaLANG=en)
+- [BioWeb Ecuador](https://bioweb.bio/)
 
 ### Shapefiles
 - [GADM World/Country/Subdivisions](https://gadm.org/index.html)
