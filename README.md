@@ -11,13 +11,13 @@ On this page, you will find the general introduction to GIS including useful res
 
 You can find the tutorials here:
 
-- [qGIS Tutorial](https://github.com/reptilerhett/GIS_Tutorial/blob/master/qGIS_Tutorial.md)
-- [R Tutorial](https://github.com/reptilerhett/GIS_Tutorial/blob/master/R_Tutorial.md)
+- [qGIS Tutorial](https://github.com/RhettRautsaw/GIS_Tutorial/blob/master/qGIS_Tutorial.md)
+- [R Tutorial](https://github.com/RhettRautsaw/GIS_Tutorial/blob/master/R_Tutorial.md)
 
 To download the necessary data for either tutorial, you can clone or download this repository:
 
 ```
-git clone https://github.com/reptilerhett/GIS_Tutorial.git
+git clone https://github.com/RhettRautsaw/GIS_Tutorial.git
 ```
 
 ## Types of Data

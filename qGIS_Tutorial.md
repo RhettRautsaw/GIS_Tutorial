@@ -255,7 +255,7 @@ I did this very quickly, so I'm sure you can make yours look better. But even th
 
 ![](./figures/15_finished_map.png)
 
-This map was made using a [NaturalEarth](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/) shapefile, but the original was made using [GADM](https://gadm.org/index.html). The [GADM](https://gadm.org/index.html) is much finer scale and ends up looking nicer, but it is also a much larger file. This means that it takes much longer to process. Nonetheless, your maps will only be as good as your data, so make sure to check out all the resources in the [Introduction to GIS](https://github.com/reptilerhett/GIS_Tutorial)
+This map was made using a [NaturalEarth](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/) shapefile, but the original was made using [GADM](https://gadm.org/index.html). The [GADM](https://gadm.org/index.html) is much finer scale and ends up looking nicer, but it is also a much larger file. This means that it takes much longer to process. Nonetheless, your maps will only be as good as your data, so make sure to check out all the resources in the [Introduction to GIS](https://github.com/RhettRautsaw/GIS_Tutorial)
 
 ## Raster Analysis
 
