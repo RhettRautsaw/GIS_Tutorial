@@ -1,17 +1,17 @@
 # Introduction to GIS
-#### Rhett M. Rautsaw
+## Rhett M. Rautsaw
 
 Geographic Information System (GIS) is a framework for gathering, managing, visualizing, and analyzing spatial data. There are many GIS softwares and applications available, the most common of which is [ESRI ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview). Although widely-used and powerful, ArcGIS is only available on Windows computers and is expensive (although your university may offer it for free).
 
-[qGIS](https://www.qgis.org/en/site/) and [R](https://www.r-project.org/) are two alternate **free** open-source softwares you can use to analyze and manage GIS data.
+[QGIS](https://www.qgis.org/en/site/) and [R](https://www.r-project.org/) are two alternate **free** open-source softwares you can use to analyze and manage GIS data.
 
-Here, I will briefly go over the basics of GIS, qGIS, and R and give you all the tips and tricks I have learned. However, there are much more extensive tutorials found elsewhere (*e.g.*, [qGIS Documentation](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/index.html)).
+Here, I will briefly go over the basics of GIS, QGIS, and R and give you all the tips and tricks I have learned. However, there are much more extensive tutorials found elsewhere (*e.g.*, [QGIS Documentation](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/index.html)).
 
 On this page, you will find the general introduction to GIS including useful resources to explain GIS concepts and a long list of data/analysis resources at the bottom of the document.
 
 You can find the tutorials here:
 
-- [qGIS Tutorial](https://github.com/RhettRautsaw/GIS_Tutorial/blob/master/qGIS_Tutorial.md)
+- [QGIS Tutorial](https://github.com/RhettRautsaw/GIS_Tutorial/blob/master/QGIS_Tutorial.md)
 - [R Tutorial](https://github.com/RhettRautsaw/GIS_Tutorial/blob/master/R_Tutorial.md)
 
 To download the necessary data for either tutorial, you can clone or download this repository:
@@ -20,13 +20,13 @@ To download the necessary data for either tutorial, you can clone or download th
 git clone https://github.com/RhettRautsaw/GIS_Tutorial.git
 ```
 
-## Types of Data
+# Types of Data
 
 There are two main types of GIS data called Vectors and Rasters. Both feature types can generally be thought of as very complex spreadsheets, where each row corresponds to a feature containing the geographic extent of that feature and other attributes associated with it. For example, a feature can have attributes like an ID number, group with which that feature is associated (*e.g.*, species), population density, depth, elevation, etc. The possibilities are limitless.
 
 So what are the differences between Vectors and Rasters?
 
-### Vector Data
+## Vector Data
 
 Vector data are geographical features expressed as geometrical shapes. Most importantly Vectors have discrete/distinct boundaries. Vector data include:
 
@@ -39,7 +39,7 @@ Vector data are geographical features expressed as geometrical shapes. Most impo
 	- Two-dimensional features used to cover a particular area to indcate boundaries.
 	- These can be used to measure area/perimeter.
 
-**The Most Common Vector Data Formats:**
+### The Most Common Vector Data Formats:
 
 - Delimited Text Files
 	- `.csv`, `.txt`, or `.tab`
@@ -61,14 +61,14 @@ Vector data are geographical features expressed as geometrical shapes. Most impo
 - Google Keyhole Markup Language
 	- `.kml` or `.kmz`
 	- This format is used by Google Earth.
-	- Google Earth is another GIS software, but offers far less utilities than others. Nonetheless, you may encounter this format. This will likely require a specific tool to be read by `ArcMap` or `qGIS`
+	- Google Earth is another GIS software, but offers far less utilities than others. Nonetheless, you may encounter this format. This will likely require a specific tool to be read by `ArcMap` or `QGIS`
 - GPS eXchange Format
 	- `.gpx`
 	- This format is used by mobile/handheld GPS units. So if you collect data with these devices, you will likely export this format from your device. Most softwares
 
-To put it bluntly, GIS data is chaos. While these are the most common formats, they are by no means the **only** formats. A more extensive list can be found [here](https://en.wikipedia.org/wiki/GIS_file_formats). `qGIS` should be able to read the formats listed [here](https://gdal.org/drivers/vector/index.html)
+To put it bluntly, GIS data is chaos. While these are the most common formats, they are by no means the **only** formats. A more extensive list can be found [here](https://en.wikipedia.org/wiki/GIS_file_formats). `QGIS` should be able to read the formats listed [here](https://gdal.org/drivers/vector/index.html)
 
-### Raster Data
+## Raster Data
 
 Raster data are represented by grids; a series of adjacent squares -- also known as grid cells or pixels -- of equal area. Rasters are most beneficial for data without discrete/distinct boundaries (unlike Vectors) and data that has continuous change across a landscape such as precipitation, elevation, slope, and other landscape-wide environmental data.
 
@@ -76,7 +76,7 @@ The size of each pixel is dependent on our ability to collect the corresponding 
 
 This concept extends to geographic raster data when we collect environmental data with different equipment orbiting the Earth or with different data stations on the surface of the Earth.
 
-**The Most Common Raster Data Formats:**
+### The Most Common Raster Data Formats:
 
 - GeoTIFF
 	- `.tif` or `.tiff`
@@ -91,13 +91,13 @@ This concept extends to geographic raster data when we collect environmental dat
 	- These can be a giant pain to work with, so hope that you never see these. The reason they exist is to be able to download pieces rather than a absurdely large database. For example SoilGrid offers 250m x 250m rasters (which is very high resolution). A single GeoTIFF would take up >100 GB of space, which as you can imagine can be difficult to work with.
 	- VRT can be converted to a massive GeoTIFF using `gdal_translate in.vrt out.tif`
 
-Much like Vector data, Raster GIS data is also chaos. While these are the most common formats, they are by no means the **only** formats. A more extensive list can be found [here](https://en.wikipedia.org/wiki/GIS_file_formats). `qGIS` should be able to read the formats listed [here](https://gdal.org/drivers/raster/index.html)
+Much like Vector data, Raster GIS data is also chaos. While these are the most common formats, they are by no means the **only** formats. A more extensive list can be found [here](https://en.wikipedia.org/wiki/GIS_file_formats). `QGIS` should be able to read the formats listed [here](https://gdal.org/drivers/raster/index.html)
 
 ![](./figures/VectorsRasters.png)
 
 [Image Source](http://gsp.humboldt.edu/OLM_2017/Lessons/GIS/08%20Rasters/RasterToVector.html)
 
-## Coordinate Reference Systems and Projections
+# Coordinate Reference Systems and Projections
 
 Like any other type of data, spatial data has a set of X and Y coordinates. The **Y** coordinate is commonly known as *Latitude* or the *Northing* value. The **X** coordinate is commonly known as *Longitude* or the *Easting* value. It's important to note that even though coordinates are often wrote as (Latitude, Longitude):
 
@@ -113,31 +113,31 @@ Unfortunately, displaying the globe as a map in 2D space is mathematically impos
 
 [Why All Maps Are Wrong](https://youtu.be/kIID5FDi2JQ)
 
-In addition, qGIS offers a great page explaining **Projections** and **CRS**. I highly recommend reading through this page because these concepts -- while the most frustrating part of GIS -- are also central to it's implementation. So it is important for you to have a good understanding of it.
+In addition, QGIS offers a great page explaining **Projections** and **CRS**. I highly recommend reading through this page because these concepts -- while the most frustrating part of GIS -- are also central to it's implementation. So it is important for you to have a good understanding of it.
 
-[qGIS: Coordinate Reference Systems](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
+[QGIS: Coordinate Reference Systems](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 
-### Geographic and Projected Coordinate Reference Systems
+## Geographic and Projected Coordinate Reference Systems
 
 There are two types of Coordinate Reference Systems, Geographic (GCS) and Projected (PCS). These two types work together to make a map. Briefly, a GCS defines *where* a point is located on the Earth's surface while the PCS defines *how* to draw that point in 2D space.
 
 ESRI offers a more detailed good explaination: [Geographic vs Projected Coordinate Systems](https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/gcs_vs_pcs/).
 
-####  Geographic Coordinate System
+###  Geographic Coordinate System
 
 The most common GCS is [WGS84 or EPSG:4326](https://en.wikipedia.org/wiki/World_Geodetic_System). This is a global coordinate system and represents the default for most phones, GPS units, Google Maps, GIS softwares, etc. Basically everything.
 
 Nonetheless, you will occassionally encounter data that has been collected in a different GCS because they may be more accurate on a local scale or for different parts of the globe. For example, [NAD83 (EPSG:4269)](https://en.wikipedia.org/wiki/North_American_Datum) is commonly used for North America. Although the differences between these two systems is minimal, it is important to pay attention to what GCS the data was collected (you can change this in GPS units) so that you can inform GIS when importing the data.
 
-#### Projected Coordinate System
+### Projected Coordinate System
 
 Next, a PCS is used to define how to draw a point in 2D space. By default most GIS softwares will have a default projection known as a pseudo-projection. However, because everything is plotted in angular degrees, it distorts areas, angles, and distances. So if you are performing analyses or measurments, it's important to actually project your data into an appropriate projection. The most common is a Mercator Projection and is what you will see on Google Maps and many other maps ([EPSG:3857](https://epsg.io/3857)). However, if you watched the video link above, you might remember that a Mercator projection distorts size a lot, so you may want to choose a different projection. All GIS tools offer ways to reproject your data different ways.
 
 Another common projection and data format is the Universal Transverse Mercator (UTM) which divides the Earth into 60 equal zones from east to west with each zone being 6 degrees wide. This reduces the distortion in each zone, but can be challenging due to the coordinate format being difficult to interpret and relative to each of the different 60 different zones.  
 
-#### Coordinate Formats
+# Coordinate Formats
 
-**Degrees of Latitude and Longitude**
+## Degrees of Latitude and Longitude
 
 Let's talk about YX coordinates again and how these data are represented. Under WGS84 (and most GCS systems), coordinates are collected in terms of degrees of latitude and longitude. Also known as parallels, lines of latitude (**Y**) run parallel to the equator and divide the earth into 180 equally spaced sections to the north and south. Because lines of latitude run parallel, the distance between the lines of latitude is the same. One degree increase in latitude is equivalent to 60 nautical miles regardless of geography. So if I say that I'm at 10° latitude, you know that I'm exactly 600 nautical miles away from the equator.
 
@@ -147,24 +147,24 @@ For example, if I'm at 0° latitude (on the equator) and at 10° longitude, you 
 
 Hopefully this illustrates the complexity of spatial data and the need for CRS and GIS-specific software.
 
-**Degree Subdivision**
+## Degree Subdivision
 
 Each line of latitude and longitude forms a fairly large rectangle of geographic space. So how do you get more fine scale representation?
 
 Easy, you either use decimal degrees (10.51°, 71.32°) or divide your degrees into minutes `'` and seconds `"` where each degree is made of 60 minutes and each minute is made of 60 seconds (10° 30' 36", 71° 19' 12"). Degrees minutes seconds format I find to be annoying, so I recommend using decimal degrees whenever possible.
 
-**Hemispheres**
+## Hemispheres
 
 Finally, all of my values have been represented by positive values. Therefore, traveling north of the equator and east of the prime meridian. However, because the equator and prime meridian represent dividing lines. It is also possible to travel south and west. This is represented in one of two ways:
 
 1. Negative values: (-10.51°, 71.32°) represents 10 degrees south and 71 degrees east.
 2. Letters: (10.51°S, 71.32°E)
 
-**UTMs**
+## UTMs
 
-As mentioned in the PCS section, UTMs are difficult to interpret. Coordinates are recorded as the distance (in meters) from the equator and the central meridian of each zone. Although this sounds intuitive (assuming you know where the zones are), UTMs cannot have negative values. Therefore, south and west values are actually represented by "false-northing" and "false-easting" values where the negative values have false northing values (10,000,000 m) and false-easting values (500,000 m) added to them. [qGIS CRS](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/coordinate_reference_systems.html#figure-geographic-crs).
+As mentioned in the PCS section, UTMs are difficult to interpret. Coordinates are recorded as the distance (in meters) from the equator and the central meridian of each zone. Although this sounds intuitive (assuming you know where the zones are), UTMs cannot have negative values. Therefore, south and west values are actually represented by "false-northing" and "false-easting" values where the negative values have false northing values (10,000,000 m) and false-easting values (500,000 m) added to them. [QGIS CRS](https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/coordinate_reference_systems.html#figure-geographic-crs).
 
-**Things to watch out for**
+# Things to watch out for with spatial data
 
 When working with spatial data you need to be mindful of:
 
@@ -241,9 +241,9 @@ Additional lists of resources:
 - [USGS Gap Analysis Project](https://www.usgs.gov/core-science-systems/science-analytics-and-synthesis/gap)
 - [USGS GIS Data](https://www.usgs.gov/products/maps/gis-data)
 - [LIDAR Online 2.0](https://www.lidar-online.com/)
-- [qGIS Basemaps](https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py)
+- [QGIS Basemaps](https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py)
 - [Maps for Free: Relief Map](https://maps-for-free.com/)
-	- Available through qGIS QuickMapServices
+	- Available through QGIS QuickMapServices
 
 
 ## Analysis

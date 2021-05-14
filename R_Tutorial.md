@@ -1,5 +1,7 @@
 # R Tutorial
-#### Rhett M. Rautsaw
+## Rhett M. Rautsaw
+
+<img align="right" src="figures/r_logo.png" width=150>
 
 COMING SOON!
 

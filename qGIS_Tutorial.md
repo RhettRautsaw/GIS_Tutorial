@@ -1,6 +1,8 @@
 # QGIS Workshop/Tutorial
 ## Rhett M. Rautsaw
 
+<img align="right" src="figures/qgis_logo.png" width=300>
+
 QGIS stands for Quantum Geographic Information Systems and is an open-source software which has many similarities with ArcGIS. However, I've found it is generally faster and accessible on nearly any platform for **free**. Furthermore, because it is open-source, the community as a whole is able to develop and make updates to it at a much quicker pace. 
 
 # Table of Contents
@@ -200,7 +202,7 @@ A line is not a very good respresentation of a distribution, so how are we going
 
 Say hello the Processing Toolbox.
 
-The Processing Toolbox is a large collection of tools that do just about anything you need. ESRI/ArcMap also has a similar toolbox. With them you can create grids, calculate distance between features (*i.e.*, points, polygons, lines), merge features together, extract by attribute, and so much more. There's far too many tools to go through them all, but I highly recommend taking some time to explore them all as there are tools developed for Rasters, Vectors, and more.
+The Processing Toolbox is a large collection of tools that do just about anything you need. ESRI/ArcMap also has a similar toolbox. With them you can create grids, calculate distance between features (*i.e.*, points, polygons, lines), merge features together, extract by attribute, and so much more. There's far too many tools to go through them all, but I highly recommend taking some time to explore them all as there are tools developed for Rasters, Vectors, and more. Here's a list of all of them with illustrations on what they do [(QGIS Processing Toolbox)](https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/index.html)
 
 To process our line shapefile we have created, we are going to use three tools:
 
