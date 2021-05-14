@@ -3,6 +3,10 @@
 
 COMING SOON!
 
+sp vs. sf
+ggplot2
+leaflet
+
 ## Installing R
 
 ## Resources
