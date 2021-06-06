@@ -28,7 +28,6 @@ QGIS stands for Quantum Geographic Information Systems and is an open-source sof
 	- [SQL](#SQL)
 	- [Raster Analysis](#Rasters)
 	- [Interpolation](#Interpolation)
-	- [Spatial Autocorrelation](#Spatial-Autocorrelation)
 	- [Graphical Models](#Graphical-Models)
 
 # Installing QGIS
