@@ -26,14 +26,14 @@ QGIS stands for Quantum Geographic Information Systems and is an open-source sof
 - [Advanced Map Making and Tools](#Advanced-Map-Making-and-Tools)
 	- [Georeferencing](#Georeferencing)
 	- [SQL](#SQL)
-	- [Raster Analysis](#Raster-Analysis)
+	- [Raster Analysis](#Rasters)
 	- [Interpolation](#Interpolation)
 	- [Spatial Autocorrelation](#Spatial-Autocorrelation)
 	- [Graphical Models](#Graphical-Models)
 
 # Installing QGIS
 
-It is probably easiest to install QGIS through [Anaconda](https://www.anaconda.com/products/individual) because it requires a version of Python that may clash with other softwares on your computer. By placing into it's own `conda` environment, you are able to update it without interfering with these other softwares. 
+It is probably easiest to install QGIS through [Anaconda](https://www.anaconda.com/products/individual) because it requires a version of Python that may clash with other softwares on your computer. By placing into it's own `conda` environment, you are able to update it without interfering with these other softwares. [Using QGIS from Conda blog by Alexandre Neto](https://gisunchained.wordpress.com/2019/05/29/using-qgis-from-conda/)
 
 Open up `Terminal` or your command line and type:
 
@@ -41,7 +41,7 @@ Open up `Terminal` or your command line and type:
 conda create -n qgis_env qgis
 ```
 
-If you are on a Windows or Linux (or if you monsters don't want to use Anaconda), then it shouldn't be too  hard to download and install from the website: [QGIS](https://www.qgis.org/en/site/). However, you're on your own. Good luck!
+Unfortunately, the conda version of QGIS is missing some things like the [SAGA](http://www.saga-gis.org/en/index.html) and [GRASS](https://grass.osgeo.org/) GIS plugin packages. We don't need them here, but if you want them then it shouldn't be too hard to download and install QGIS from their [website](https://www.qgis.org/en/site/).
 
 
 # Launching QGIS
@@ -369,7 +369,7 @@ The last thing I will show you is Virtual Layers and using PostGIS. Virtual laye
 
 To show you this, let's pretend that we wanted to highlight the southeastern coastal plain of the United States. We don't need the state lines, we just want a border around that area colored differently. The first thing we need, is a unique ID for those columns. If you open the attributes table, I think the "adm1_code" column will do the trick.
 
-Go ahead an select those states (Louisiana, Mississippi, Alabama, Florida, Georgia, South Carolina, and North Carolina) and bring them to the top of your attributes table. Make a list of the entries in the "adm1_code" column. Unfortunately, there is no easy way to copy-paste those. So you can do this manually, or you can use the `list_ids.py` script I've provided. Simply open the Python Console and open the editor. You can copy and paste my script in here and then hit the green arrow to run. This will display a list for "adm1_code": `'USA-3543', 'USA-3549', 'USA-3544', 'USA-3535', 'USA-3542', 'USA-3541', 'USA-3545'`
+Go ahead an select those states (Louisiana, Mississippi, Alabama, Florida, Georgia, South Carolina, and North Carolina) and bring them to the top of your attributes table. Make a list of the entries in the "adm1_code" column. Unfortunately, there is no easy way to copy-paste those. So you can do this manually, or you can use the `sql/list_ids.py` script I've provided. Simply open the Python Console and open the editor. You can copy and paste my script in here and then hit the green arrow to run. This will display a list for "adm1_code": `'USA-3543', 'USA-3549', 'USA-3544', 'USA-3535', 'USA-3542', 'USA-3541', 'USA-3545'`
 
 Next, we can go to the "Manage Layers Toolbar" and add a new Virtual Layer. In the virtual layer we need to make a full SQL statement in the "Query" box to create our new layer. We can use the PostGIS function `st_union` to merge these states together into one polygon. So the final SQL statement looks like this
 
@@ -381,17 +381,49 @@ Now we can style it however we want!
 
 ## Rasters
 
-Coming soon!
+So far, we have only dealt with vector data. Vectors are used to represent discrete data (*e.g.*, species ranges, occurrence records, country boundaries). However, many types of data are not actually discrete, but instead continuous surfaces. For example, rainfall, temperature, elevation, or soil characteristics vary continuously across the globe or given landscape. These data are instead represented by **rasters**. 
+
+Rasters are essentially *photographs* and are often represented by similar file formats (*e.g.*, tif). Photos are series of equally sized squares -- or pixels -- arranged into a grid. Each pixel is assigned a color value and when you look at millions of pixels together in this grid, they form an image of your dog...or whatever you took a photo of. The more pixels you have, the higher resolution your photograph is. Rasters work identially, but instead of each pixel being assigned a color, it is assigned a value that represents data such as temperature laid over geography. Again, the more pixels you have, the higher resolution your raster. 
+
+Rasters are incredibly useful in many applications, the most common in biology is species distribution modeling or ecological niche modeling. However, that is a very complicated subject and deserves it's own workshop. Instead, lets do a much simpler application. Lets use rasters to build a cost surface and identify potential locations for wildlife corridors, specifically for the Florida Panther. 
+
+### Raster Calculator and Least Cost Path Analysis
+
+Inside the `qgis/least_cost_path/` folder, I have provided a set of three rasters with the abbreviation `lc`. These are rasters representing landcover from [EarthEnv.org](EarthEnv.org). Specifically, they are rasters where each cell ranges from 0-100 and represents the percentage of that cell that is a given landcover type. I've provided the rasters for agriculture, urban, and open water landcover types. I chose these because these are environments that would be risky for an animal (like the Florida Panther) to cross. Therefore, we can use these together to build a raster that represents travel cost/riskyness with higher values representing a higher risk. To build this raster, we can use the `Raster Calculator` to add these together. 
+
+```"lc07_agriculture@1" + "lc09_urban@1" + "lc12_water@1"```
+
+If you think one of these landcover types is riskier than another, then you can weight it appropriately.
+
+```("lc07_agriculture@1"*0.1) + ("lc09_urban@1"*0.6) + ("lc12_water@1"*0.3)```
+
+This will create a new layer representing the cost or riskiness of travel across that cell. I've also included two point geometry geojson files. These represent the start and ending points where we would like our Florida Panthers to be able to travel. So what is the best path for a Florida Panther to take to get from point A to point B with the shortest distance AND least risk? To find out, we can use the `Least Cost Path` plugin tool, simply provide it with our cost raster and our start/end points and it will draw us a line answering our question. We can then use that line to try and identify areas where wildlife corridors might be able to be improved or built over roadways.
+
+![](./qgis/figures/17_raster_calculator_and_lcp.gif)
 
 ## Interpolation
 
-Coming soon!
+Rasters are great right?! They sure are! But what if we don't already have a raster? It's great that so many different raster layers already exist for us to use -- soil, temperature, precipitation, landcover, topology, etc. -- but what if we needed more fine scale data at a given study site? Or perhaps we need a type of data that has never been collected before? For example, if you were studying disease dynamics, it might be useful to have a raster for density of disease carrying organisms like mosquitos or rats. In this case, there is no possible way you could collect data at every infinitely small point on Earth. So how do you get this map? 
 
-## Spatial Autocorrelation
+Say hello to **interpolation**. With interpolation, we can use mathematical functions to build a raster from point data collected in the field. For example, you could collect data on rat density at 100 locations and then use these points to build a continuous layer/raster. There are many different ways to do interpolation...too many in fact and I can't cover them all, but here's a [link](https://pro.arcgis.com/en/pro-app/2.7/tool-reference/spatial-analyst/comparing-interpolation-methods.htm). I will tell you that the most common are Inverse Distance Weighted (IDW), Kriging, Splines, Trend Surface and Triangulated Irregular Networks (TIN; aka Delaunay triangulation). Each of these methods has the assumption that points closer to one another will be more similar to one another than to points farther away and has the goal of estimating unknown values from the set of sample points. Assuming a linear function, if point A is 0 and point B is 10, then the middle point will be 5. Easy enough to understand right?
 
-Coming soon!
+IDW and TIN are available in the [QGIS processing toolbox](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html?highlight=interpolation), but the others are found through the [SAGA](http://www.saga-gis.org/en/index.html) and [GRASS](https://grass.osgeo.org/) GIS plugin packages. Unfortunately [SAGA](http://www.saga-gis.org/en/index.html) and [GRASS](https://grass.osgeo.org/) are not available via the Anaconda installation, and have to be installed manually. However, if you did not use Anaconda to install QGIS, then they might be available via `Preferences > Processing > Providers >`
+
+To show you how interpolation works, we are going to use a pretty boring example....sorry for not interpolating rat density. We are going to use a sampling of points on the average annual temperature in Florida and try to recreate the existing [bioclim BIO1](https://www.worldclim.org/data/bioclim.html) layer. Inside the `qgis/interpolation` folder, I have provided a geojson with the outline of Florida and a csv of datalogger points. I've also included the original bioclim layer for comparison, but we won't explicitly need that. To try and recreate this bioclim layer, lets use the TIN method. Simply open up this processing tool and select the datalogger points and the "temp" column to interpolate the temperature specifically. You can interpolate multiple things at one time, so don't forget to hit the "+" button to add it to the attribute interpolation queue. Then use the Florida shapefile as your extent and hit OK! It's not perfect, but it's pretty good. You can play with the cell size and interpolation method and see if you can make it better (or worse). Don't forget that you can modify the symbology to make it pretty!
+
+![](./qgis/figures/18_interpolation.gif)
 
 ## Graphical Models
 
-Coming soon!
+Alright, this is the last thing I'm going to tell you about before you are on your own.
 
+Let's return to our distribution map that we made for our watersnakes (*Nerodia clarkii*). Remember that after we drew our line, we had to use a set of three tools: `Reproject`, `Buffer`, and `Clip` to create our final distribution. What if we needed to do that several times over and over again and we really don't need those annoying intermediate files? The **Graphical Modeler** allows us to create pipelines just like this and it is as easy as a few drag and drops! So let's do it!
+
+I've provided the initial line shapefile (in case you didn't save it) and the florida geojson shapefile in `qgis/graphical_modeler`. I've also provided the saved model if you are lazy, but lets build it together. To start, go to your processing toolbox and set of red, gray and white gears (that's your model builder) and create a new model. From here, we can drag in three inputs: (1) a vector layer (any geometry) that we want to reproject, buffer, and clip, (2) a vector layer (polygon geometry) that will be used to do the clipping, and (3) a numerical entry for the buffer distance in meters. We can then drag in the tools we need: (1) Reproject, (2) Buffer, and (3) Clip. In each tool, we will need to provide either an input value, a model temporary output, or a default value. We can then save our model and run it to watch the magic happen.
+
+![](./qgis/figures/19_graphical_modeler.gif)
+
+
+# Conclusion
+
+That's all I have to show you. I hope this was helpful!

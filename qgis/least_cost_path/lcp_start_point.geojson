@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "lcp_start_point",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "Point", "coordinates": [ -81.070739848694942, 25.697127423066817 ] } }
+]
+}
