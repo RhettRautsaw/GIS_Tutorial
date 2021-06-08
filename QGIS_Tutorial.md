@@ -217,7 +217,7 @@ We still only have a line, but it is in a new CRS. Now we can use `Buffer` to cr
 
 You've now created a temporary polygon shapefile, but this polygon extends into the Ocean. Although these snakes are found along the coast, they do not necessarily inhabit the Ocean. We can use `Clip` to remove anything outside of Florida shapefile. 
 
-![](./qgis/figures/09_processing_toolbox.gif)
+![](./qgis/figures/09_analysis_toolbox.gif)
 
 ## Vector Editor and the Digitizing Toolbar
 
