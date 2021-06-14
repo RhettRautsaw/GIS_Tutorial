@@ -183,6 +183,7 @@ Additional lists of resources:
 - [GIS Geography](https://gisgeography.com/best-free-gis-data-sources-raster-vector/)
 - [Specimen Data Use Cases](https://biodiversity-specimen-data.github.io/specimen-data-use-case/)
 	- [Biodiversity Record Aggregators](https://biodiversity-specimen-data.github.io/specimen-data-use-case/AggregatorsTable)
+- [GeoLocate](https://www.geo-locate.org/web/default.html)
 
 ## Training
 
@@ -191,6 +192,8 @@ Additional lists of resources:
 - [ArcGIS on Mac](https://www.esri.com/arcgis-blog/products/arcgis-pro/3d-gis/arcgis-pro-in-mac-os-x/?rmedium=redirect&rsource=blogs.esri.com/esri/arcgis/2016/03/08/arcgis-pro-in-mac-os-x)
 - [Spatial Data Science with R](https://rspatial.org/index.html)
 - [CRS in R](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)
+- [QGIS Tutorials](https://www.qgistutorials.com/en/index.html)
+- [QGIS Training Modules](https://docs.qgis.org/3.16/en/docs/training_manual/index.html)
 
 ## Data
 

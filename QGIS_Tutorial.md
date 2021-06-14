@@ -425,4 +425,8 @@ I've provided the initial line shapefile (in case you didn't save it) and the fl
 
 # Conclusion
 
-That's all I have to show you. I hope this was helpful!
+That's all I have to show you. I hope this was helpful! 
+
+If I didn't cover something, you might want to check out these other workshops/tutorials!
+- [QGIS Tutorials](https://www.qgistutorials.com/en/index.html)
+- [QGIS Training Manual](https://docs.qgis.org/3.16/en/docs/training_manual/index.html)
